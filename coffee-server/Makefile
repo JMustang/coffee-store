@@ -17,3 +17,6 @@ create_db:
 
 start_container:
 	docket start ${DB_DOCKER_CONTAINER}
+
+create_migration:
+	sqlx migrate add -r init
