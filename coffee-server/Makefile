@@ -16,7 +16,7 @@ create_db:
 	docker exec -it ${DB_DOCKER_CONTAINER} createdb --username=${USER} --owner=${USER} ${DB_NAME}
 
 start_container:
-	docket start ${DB_DOCKER_CONTAINER}
+	docker start ${DB_DOCKER_CONTAINER}
 
 create_migration:
 	sqlx migrate add -r init
