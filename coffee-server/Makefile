@@ -38,3 +38,8 @@ build:
 run: build
 	./${BINARY}
 # @echo "api started..."
+
+stop:
+	@echo "stopping server.."
+	@-pkill -SIGTERM -f "./${BINARY}"
+	@echo "server stopped..."
