@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/JMustang/coffee-server/db"
 	"github.com/joho/godotenv"
 )
 
@@ -42,7 +43,13 @@ func main() {
 		Port: os.Getenv("PORT"),
 	}
 
-	// TODO: connection to db
+	dsn := os.Getenv("DSN")
+	dbConn, err := db.ConnectPostgres(dsn)
+	if err != nil {
+		log.Fatal("Cannot connect to database")
+	}
+
+	defer dbConn.DB.Close()
 
 	app := &Application{
 		config: cfg,
