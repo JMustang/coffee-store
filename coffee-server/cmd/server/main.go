@@ -37,4 +37,20 @@ func main() {
 	if err != nil {
 		log.Fatal("Error leading .env file")
 	}
+
+	cfg := Config{
+		Port: os.Getenv("PORT"),
+	}
+
+	// TODO: connection to db
+
+	app := &Application{
+		config: cfg,
+		// TODO: add models later
+	}
+
+	err = app.Server()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
